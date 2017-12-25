@@ -1,15 +1,17 @@
 # Uses python3
 import sys
 
-def lcm_naive(a, b):
-    for l in range(1, a*b + 1):
-        if l % a == 0 and l % b == 0:
-            return l
+def euclidGCD(a, b):
+    if (b == 0):
+        return a
+    else:
+        a_prime = a % b
+        return euclidGCD(b, a_prime)
 
-    return a*b
+def lcm(a, b):
+    return (a * b) // euclidGCD(a, b)
 
 if __name__ == '__main__':
     input = sys.stdin.read()
     a, b = map(int, input.split())
-    print(lcm_naive(a, b))
-
+    print(lcm(a, b))
