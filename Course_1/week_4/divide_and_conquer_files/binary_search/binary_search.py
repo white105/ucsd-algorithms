@@ -1,9 +1,18 @@
 # Uses python3
 import sys
 
-def binary_search(a, x):
-    left, right = 0, len(a)
-    # write your code here
+def binary_search(arr, x):
+    l = 0
+    r = len(arr) - 1
+    while l <= r:
+        mid = l + (r - l)//2;
+        if arr[mid] == x:
+            return mid
+        elif arr[mid] < x:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return -1
 
 def linear_search(a, x):
     for i in range(len(a)):
@@ -19,4 +28,4 @@ if __name__ == '__main__':
     a = data[1 : n + 1]
     for x in data[n + 2:]:
         # replace with the call to binary_search when implemented
-        print(linear_search(a, x), end = ' ')
+        print(binary_search(a, x), end = ' ')
